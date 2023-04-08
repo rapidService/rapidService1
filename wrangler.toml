@@ -3,4 +3,3 @@ main = "src/index.ts"
 compatibility_date = "2023-04-08"
 bucket = './build'
 entry-point = 'workers-site'
-account-id='2981dfd34e5198862828f7077dd10ece'
