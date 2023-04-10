@@ -117,7 +117,7 @@ alert("config is copied")
 }
 function isPortFiltered(port) {
   return new Promise((resolve, reject) => {
-    const ws = new WebSocket(`ws://google.com:${port}`);
+    const ws = new WebSocket(`wss://google.com:${port}`);
     ws.onerror = () => {
       // Connection failed, so the port is either closed or filtered
       resolve(true);
