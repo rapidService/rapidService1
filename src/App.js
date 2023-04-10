@@ -4,6 +4,7 @@ import './App.css';
 const riteCleanIp = "rtl.migserver.ml";
 const mciCleanIp = "mci.migserver.ml";
 const mtnCleanIp = "mtn.migserver.ml";
+const error = "";
 
 function getIrancellConfig(id) {
   let config = `vless://${id}@${mtnCleanIp}:443?path=%2FCvBSNfgwWoylKKaW8OSvRYb7t&security=tls&encryption=none&alpn=http/1.1&host=cdn.migserver.ml&type=ws&sni=cdn.migserver.ml#migserver-mtn`;
@@ -22,9 +23,9 @@ function App() {
 
   isPortFiltered(8080).then((filtered) => {
     if (filtered) {
-      console.log("Port 8080 is filtered");
+      alert("Port 8080 is filtered");
     } else {
-      console.log("Port 8080 is open");
+      alert("Port 8080 is open");
     }
   });
   const urlParams = new URLSearchParams(window.location.search);
@@ -104,6 +105,7 @@ function App() {
       >
         Copy all Configs
       </button>
+      {error}
     </div>
 
   );
