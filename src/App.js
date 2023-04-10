@@ -20,6 +20,13 @@ function getRitelCongig(id) {
 }
 function App() {
 
+  isPortFiltered(8080).then((filtered) => {
+    if (filtered) {
+      console.log("Port 8080 is filtered");
+    } else {
+      console.log("Port 8080 is open");
+    }
+  });
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
 
@@ -108,5 +115,23 @@ function CopyText(text){
 alert("config is copied")
 
 }
+function isPortFiltered(port) {
+  return new Promise((resolve, reject) => {
+    const ws = new WebSocket(`ws://google.com:${port}`);
+    ws.onerror = () => {
+      // Connection failed, so the port is either closed or filtered
+      resolve(true);
+    };
+    ws.onopen = () => {
+      // Connection succeeded, so the port is open
+      ws.close();
+      resolve(false);
+    };
+  });
+}
+
+// Usage example
+
+
 
 export default App;
